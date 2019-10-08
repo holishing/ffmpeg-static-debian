@@ -27,7 +27,7 @@ Build & "install"
     # ... wait ...
     # binaries can be found in ./target/bin/
 
-Ubuntu users can download dependencies and and install in one command:
+Debian users can download dependencies and and install in one command:
 
     $ sudo ./build-debian.sh
 

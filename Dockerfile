@@ -1,18 +1,13 @@
 FROM debian:buster
 MAINTAINER holishing <holishing@ccns.ncku.edu.tw>
 
-# Basic packages needed to download dependencies and unpack them.
-RUN apt-get update && apt-get install -y \
-  bzip2 \
+RUN apt-get update && apt-get upgrade -y && apt-get install -y \
+  bzip2         `# Basic packages needed to download dependencies and unpack them.`  \
   perl \
   tar \
   wget \
   xz-utils \
-  && rm -rf /var/lib/apt/lists/*
-
-# Install packages necessary for compilation.
-RUN apt-get update && apt-get install -y \
-  autoconf \
+  autoconf      `# Install packages necessary for compilation.` \
   automake \
   bash \
   build-essential \
