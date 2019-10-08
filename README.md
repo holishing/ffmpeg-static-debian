@@ -29,7 +29,7 @@ Build & "install"
 
 Ubuntu users can download dependencies and and install in one command:
 
-    $ sudo ./build-ubuntu.sh
+    $ sudo ./build-debian.sh
 
 If you have built ffmpeg before with `build.sh`, the default behaviour is to keep the previous configuration. If you would like to reconfigure and rebuild all packages, use the `-B` flag. `-d` flag will only download and unpack the dependencies but not build.
 

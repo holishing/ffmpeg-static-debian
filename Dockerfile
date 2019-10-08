@@ -1,4 +1,5 @@
-FROM ubuntu:bionic
+FROM debian:buster
+MAINTAINER holishing <holishing@ccns.ncku.edu.tw>
 
 # Basic packages needed to download dependencies and unpack them.
 RUN apt-get update && apt-get install -y \
