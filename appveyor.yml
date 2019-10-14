@@ -1,0 +1,7 @@
+version: {build}
+image:
+- Ubuntu1804
+services:
+- docker
+build:
+- ./run_docker_build.sh
