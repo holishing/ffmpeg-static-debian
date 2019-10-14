@@ -15,16 +15,14 @@ docker tag "holishing/ffmpeg-static-env:buster" "holishing/ffmpeg-static-env:lat
 docker build --no-cache --build-arg "DEBVER=stretch" -t "holishing/ffmpeg-static-env:stretch" -f Dockerfile .
 docker tag "holishing/ffmpeg-static-env:stretch" "holishing/ffmpeg-static-env:linux2.6.32"
 
+mkdir -p build/linux3 build/linux2
 CONTAINER_LINUX3=container_linux3
 CONTAINER_LINUX2=container_linux2
 
-docker run -it --name "$CONTAINER_LINUX3" holishing/ffmpeg-static-env:linux3.2.0  ./build.sh || docker rm "$CONTAINER_LINUX3"
-docker run -it --name "$CONTAINER_LINUX2" holishing/ffmpeg-static-env:linux2.6.32 ./build.sh || docker rm "$CONTAINER_LINUX2"
+docker run -it --name "$CONTAINER_LINUX3" "holishing/ffmpeg-static-env:linux3.2.0"  ./build.sh || docker rm "$CONTAINER_LINUX3"
+docker cp "$CONTAINER_LINUX3":/ffmpeg-static/bin build/linux3 && docker rm "$CONTAINER_LINUX3"
 
-mkdir -p build/linux3 build/linux2
-docker cp "$CONTAINER_LINUX3":/ffmpeg-static/bin build/linux3
-docker cp "$CONTAINER_LINUX2":/ffmpeg-static/bin build/linux2
-
-docker rm "$CONTAINER_LINUX3" "$CONTAINER_LINUX2"
+docker run -it --name "$CONTAINER_LINUX2" "holishing/ffmpeg-static-env:linux2.6.32" ./build.sh || docker rm "$CONTAINER_LINUX2"
+docker cp "$CONTAINER_LINUX2":/ffmpeg-static/bin build/linux2 && docker rm "$CONTAINER_LINUX2"
 
 printf "\033[1;32m===================Completed!!!====================\033[0m\n"
