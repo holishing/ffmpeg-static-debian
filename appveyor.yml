@@ -3,7 +3,7 @@ image:
 services:
 - docker
 test_script:
-- ./run_docker_build.sh
+- APPVEYOR=True ./run_docker_build.sh
 - tar zcvf ffmpeg-static-linux3.tgz build/linux3
 - tar zcvf ffmpeg-static-linux2.tgz build/linux2
 artifacts:

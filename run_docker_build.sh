@@ -18,7 +18,7 @@ docker tag "holishing/ffmpeg-static-env:stretch" "holishing/ffmpeg-static-env:li
 mkdir -p build/linux3 build/linux2
 CONTAINER_LINUX3=container_linux3
 CONTAINER_LINUX2=container_linux2
-test -z "$TERM" || DOCKER_TERMIO_ARG=" -it"
+test -z "$APPVEYOR" && DOCKER_TERMIO_ARG=" -it"
 
 docker run $DOCKER_TERMIO_ARG --name "$CONTAINER_LINUX3" "holishing/ffmpeg-static-env:linux3.2.0"  ./build.sh || docker rm "$CONTAINER_LINUX3"
 docker cp "$CONTAINER_LINUX3":/ffmpeg-static/bin build/linux3 && docker rm "$CONTAINER_LINUX3"
