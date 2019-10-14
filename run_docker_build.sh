@@ -1,6 +1,8 @@
 #!/bin/sh
 
-set -eu
+set -ex
+test -z "$APPVEYOR" && APPVEYOR=0
+set -u
 
 ### This shell script aim to be a POSIX-shell compatible script
 ### If There's a POSIX-shell run this script came into problem, welcome report as bugs
@@ -18,7 +20,7 @@ docker tag "holishing/ffmpeg-static-env:stretch" "holishing/ffmpeg-static-env:li
 mkdir -p build/linux3 build/linux2
 CONTAINER_LINUX3=container_linux3
 CONTAINER_LINUX2=container_linux2
-test -z "$APPVEYOR" && DOCKER_TERMIO_ARG=" -it"
+test -eq $APPVEYOR 0 && DOCKER_TERMIO_ARG=" -it" || DOCKER_TERMIO_ARG=""
 
 docker run $DOCKER_TERMIO_ARG --name "$CONTAINER_LINUX3" "holishing/ffmpeg-static-env:linux3.2.0"  ./build.sh || docker rm "$CONTAINER_LINUX3"
 docker cp "$CONTAINER_LINUX3":/ffmpeg-static/bin build/linux3 && docker rm "$CONTAINER_LINUX3"
