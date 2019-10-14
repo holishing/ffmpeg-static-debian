@@ -1,4 +1,7 @@
-FROM debian:buster
+# You can replace it with add `--no-cache --build-args DEBVER=stretch` to make a GNU/linux 2.6.32 static binary
+ARG DEBVER=buster
+
+FROM debian:${DEBVER}
 MAINTAINER holishing <holishing@ccns.ncku.edu.tw>
 
 RUN apt-get update && apt-get upgrade -y && apt-get install -y \
@@ -27,7 +30,6 @@ RUN apt-get update && apt-get upgrade -y && apt-get install -y \
   libvdpau-dev \
   libvo-amrwbenc-dev \
   libvorbis-dev \
-  libwebp-dev \
   libxcb1-dev \
   libxcb-shm0-dev \
   libxcb-xfixes0-dev \

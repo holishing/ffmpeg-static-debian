@@ -420,7 +420,7 @@ if [ "$platform" = "linux" ]; then
     --pkg-config-flags="--static" \
     --extra-cflags="-I$TARGET_DIR/include" \
     --extra-ldflags="-L$TARGET_DIR/lib" \
-    --extra-libs="-lpthread -lm -lz" \
+    --extra-libs="-lpthread -lmvec -lm -lz" \
     --extra-ldexeflags="-static" \
     --bindir="$BIN_DIR" \
     --enable-pic \

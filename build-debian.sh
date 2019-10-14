@@ -21,7 +21,6 @@ sudo apt-get -y --force-yes install \
   libvdpau-dev \
   libvo-amrwbenc-dev \
   libvorbis-dev \
-  libwebp-dev \
   libxcb1-dev \
   libxcb-shm0-dev \
   libxcb-xfixes0-dev \
