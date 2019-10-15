@@ -12,17 +12,19 @@ test_script:
 - tar zcvf ffmpeg-static-linux.tgz build/$DEBVER/bin/ffmpeg build/$DEBVER/bin/ffprobe
 
 for:
-- matrix:
+-
+matrix:
   only:
     - DEBVER: buster
-  artifacts:
-    - path: ffmpeg-static-linux3.tgz
-      name: FFmpeg Static GNU/Linux 3.2.0 Binary
-- matrix:
+    artifacts:
+      - path: ffmpeg-static-linux3.tgz
+        name: FFmpeg Static GNU/Linux 3.2.0 Binary
+-
+matrix:
   only:
     - DEBVER: stretch
-  artifacts:
-    - path: ffmpeg-static-linux2.tgz
-      name: FFmpeg Static GNU/Linux 2.6.32 Binary
+    artifacts:
+      - path: ffmpeg-static-linux2.tgz
+        name: FFmpeg Static GNU/Linux 2.6.32 Binary
 
 build: off
