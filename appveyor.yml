@@ -9,7 +9,7 @@ environment:
   - DEBVER: stretch
 test_script:
 - ./run_docker_build.sh
-- tar zcvf ffmpeg-static-linux.tgz build/$DEBVER/bin/ffmpeg build/$DEBVER/bin/ffprobe
+- tar zcvf ffmpeg-static-linux-$DEBVER.tgz build/$DEBVER/bin/ffmpeg build/$DEBVER/bin/ffprobe
 
 for:
 
@@ -18,7 +18,7 @@ for:
     only:
       - DEBVER: buster
   artifacts:
-  - path: ffmpeg-static-linux3.tgz
+  - path: ffmpeg-static-linux-buster.tgz
     name: FFmpeg Static GNU/Linux 3.2.0 Binary
 
 -
@@ -26,7 +26,7 @@ for:
     only:
       - DEBVER: stretch
   artifacts:
-  - path: ffmpeg-static-linux2.tgz
+  - path: ffmpeg-static-linux-stretch.tgz
     name: FFmpeg Static GNU/Linux 2.6.32 Binary
 
 build: off
