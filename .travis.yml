@@ -1,7 +1,13 @@
 sudo: required
 
+language: minimal
+
 services:
   - docker
 
-script:
-  - ./run_docker_build.sh
+matrix:
+  include:
+    - script:
+      - ./run_docker_build.sh
+    - script:
+      - DEBVER=stretch ./run_docker_build.sh

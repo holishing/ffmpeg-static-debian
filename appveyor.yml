@@ -2,13 +2,15 @@ image:
 - Ubuntu1804
 services:
 - docker
+environment:
+  APPVEYOR: True
+  matrix:
+  - DEBVER: buster
+  - DEBVER: stretch
 test_script:
-- APPVEYOR=True ./run_docker_build.sh
-- tar zcvf ffmpeg-static-linux3.tgz build/linux3
-- tar zcvf ffmpeg-static-linux2.tgz build/linux2
+- ./run_docker_build.sh
+- tar zcvf ffmpeg-static-linux.tgz build/$DEBVER
 artifacts:
-- path: ffmpeg-static-linux3.tgz
-  name: FFmpeg Static Tarball for GNU/Linux 3.2.0 Binary
-- path: ffmpeg-static-linux2.tgz
-  name: FFmpeg Static Tarball for GNU/Linux 2.6.32 Binary
+- path: ffmpeg-static-linux.tgz
+  name: FFmpeg Static Linux Binary
 build: off
