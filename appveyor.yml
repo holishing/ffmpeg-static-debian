@@ -13,18 +13,18 @@ test_script:
 
 for:
 -
-matrix:
-  only:
-    - DEBVER: buster
-    - artifacts:
-        - path: ffmpeg-static-linux3.tgz
-          name: FFmpeg Static GNU/Linux 3.2.0 Binary
+  matrix:
+    only:
+      - DEBVER: buster
+      - artifacts:
+          - path: ffmpeg-static-linux3.tgz
+            name: FFmpeg Static GNU/Linux 3.2.0 Binary
 -
-matrix:
-  only:
-    - DEBVER: stretch
-    - artifacts:
-        - path: ffmpeg-static-linux2.tgz
-          name: FFmpeg Static GNU/Linux 2.6.32 Binary
+  matrix:
+    only:
+      - DEBVER: stretch
+      - artifacts:
+          - path: ffmpeg-static-linux2.tgz
+            name: FFmpeg Static GNU/Linux 2.6.32 Binary
 
 build: off
